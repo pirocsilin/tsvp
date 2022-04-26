@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="do.sibsutis.ru">
+
+  <title>Тема 2. Конспект лекций</title>
+	
+	<link rel="icon" type="image/png" href="../lib/css/favicon.png">
+  <!-- Bootstrap Core CSS -->
+  <link href="../lib/css/bootstrap.css" rel="stylesheet">
+	
+  <!-- Custom CSS -->
+  <link href="../lib/css/scrolling-nav.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+ <div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+   <li class="hidden"> <a class="page-scroll" href="#page-top"></a> </li>
+	 
+	 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+   </button>
+	 
+   <a class="navbar-brand " href="../index.htm"> 
+  <text class = "hidden-xs">Теория сложности вычислительных процессов и структур</text> 
+  <text class = "visible-xs">ТСВП и С</text>
+	 </a>
+  </div>
+
+  <!-- Collect the nav links, forms, and glyphicon glyphicon-list-alt content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+   
+	 <!-- <ul class="nav navbar-nav">
+		<li><a href="#"></a></li> 
+   </ul> -->
+	
+   <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+		<button type="button" class="navbar-toggle dropdown-toggle hidden-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>	   
+		<a class = "dropdown-toggle visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Материалы</a>
+     <ul class="dropdown-menu">
+    <li><a href="../index.htm">Аннотация курса</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="lec_index.htm">Теория</a></li>
+	<!--li><a href="Posobie.htm">Учебное пособие</a></li-->
+
+        <li><a href="labs.htm">Лабораторные работы</a></li>   
+    <li><a href="c_work.htm">Контрольная работа</a></li>
+      <li role="separator" class="divider"></li>
+       <li><a href="lit.htm">Литература</a></li>
+      <!--li><a href="q.htm">Вопросы для самопроверки</a></li-->			
+     </ul>
+ </li>
+ </ul>
+  </div><!-- /.navbar-collapse -->
+ </div><!-- /.container-fluid -->
+</nav>
+
+
+  <div id="intro" class="section content-section ">
+    <div class="container">
+       <div class="row">
+        <div class="col-lg-12">	
+
+
+<!-- содержание -->	
+<div class="page-header">				
+
+<h3><a href="#">2. НОВЫЕ БЫСТРЫЕ ВЕРСИИ СТАРЫХ АЛГОРИТМОВ</a></h3>
+<a href="#1" class=punkt>2.1 Сортировка массивов</a><br>
+
+<a href="#2" class=punkt>2.2 Быстрое умножение</a><br>
+
+
+</div>
+<!--начало-->
+<a name=1 class="anchor"></a>
+
+<h3>2.1 Сортировка массивов</h3>
+<p><U><strong>Справка</strong></U><strong>:</strong>Пусть 
+дан массив <B><IMG SRC="img/image115.gif" WIDTH=120 HEIGHT=24></B>, состоящий 
+из <I>n </I>элементов. Для всех элементов определены отношения &lt;, &gt;, =. Тогда <I>сортировка 
+  </I>– это процесс, в ходе которого элементы массива переставляются таким образом, 
+  что выполняется одно из следующих неравенств:</P>
+<P><IMG SRC="img/image116.gif" WIDTH=117 HEIGHT=24><B>– </B>массив 
+  отсортирован по возрастанию (в прямом порядке) или</P>
+<P><IMG SRC="img/image117.gif" WIDTH=117 HEIGHT=24><B>– </B>массив 
+  отсортирован по убыванию (в обратном порядке).</P>
+<B> 
+<P>2.1.1 Пузырьковая сортировка (BubbleSort)</P>
+</B> 
+<p><I>Пузырьковая 
+  сортировка</I> – пример простейшего метода сортировки,</font></P>
+<p> обладающего 
+  квадратичной трудоёмкостью.</font></P>
+<B><U>Алгоритм</U>: </B>Двигаясь 
+от конца массива к его началу, сравниваем между собой соседние элементы. Если 
+правый элемент меньше, чем левый, то меняем их местами. Таким образом, при первом 
+проходе массива самый маленький элемент переместится на первое место, и его можно 
+не учитывать при сортировке оставшейся части массива. При втором проходе (его 
+можно начинать не с первого, а со второго элемента массива), наименьший из оставшихся 
+элементов переместится на второе место. Затем начинаем двигаться с третьего элемента, 
+и так далее. Необходимо предусмотреть возможность выхода из алгоритма в случае, 
+если мы прошли весь массив и не сделали ни одной перестановки. Для сортировки 
+всего массива понадобится не более, чем <I>(n-1)</I> проходов. </p> 
+<p>Пузырьковая сортировка сильно зависит от упорядоченности 
+  массива.</P>
+<P>Трудоемкость алгоритма (максимальная): <IMG SRC="img/image118.gif" WIDTH=280 HEIGHT=41>.</P>
+<p>В случае если исходный массив отсортирован по 
+  возрастанию, трудоемкость алгоритма составляет <I>(n-1)</I> сравнений.</P>
+<B> 
+<P>2.1.2 Метод прямого выбора (SelectSort)</P>
+</B> 
+<P><I> Метод прямого выбора</I> 
+  – пример простейшего метода сортировки,обладающего квадратичной трудоёмкостью.</font></P>
+<p><B><U>Алгоритм</U>: 
+  </B>Просматриваем весь массив, находим минимальный элемент, ставим его на первое 
+  место. Потребуется <I>n–1</I> сравнений и одна перестановка. При втором проходе 
+  просматриваем массив, начиная со второго элемента, находим минимум среди просматриваемой 
+  ( не отсортированной) части и ставим его на второе место, и т.д. Потребуется 
+  <I>n–2</I> сравнений и одна перестановка. Для полного упорядочивания придется 
+  совершить <I>n–1</I> проходов не отсортированной части.</P>
+<P>Трудоемкость алгоритма: 
+  <IMG SRC="img/image119.gif" WIDTH=329 HEIGHT=45 align="absmiddle">.</P>
+<B>  
+<P>2.1.3 Быстрая 
+  сортировка методом двоичных вставок (MergeSort)</P>
+</B> 
+<p>Рассмотрим 
+  случай, когда количество элементов массива равно степени двойки n=2<SUP>k</SUP></P>
+<p><B><U>Алгоритм</U>:</B> 
+  1. Разобьем массив на пары и упорядочим каждую. Получаем серии длины 2.</P>
+<p>2. При втором 
+  проходе сливаем полученные на первом этапе пары в упорядоченные четверки. Получаем 
+  серии длины 4.</P>
+<p>3. При третьем 
+  проходе получаем упорядоченные восьмерки, и т.д., пока длина серии не станет 
+  равной количеству элементов массива (на <I>k</I>-том проходе).</font></P>
+<p>Оценим трудоемкость 
+  алгоритма:</P>
+<p>Сначала 
+  оценим трудоемкость слияния двух упорядоченных массивов из <I>k</I> и <I>l</I> 
+  элементов (считаем только сравнения):</P>
+<I> 
+<p>k:</P>
+</I> 
+<P> 
+
+  <TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=208>
+    <TR> 
+      <TD WIDTH="18%" VALIGN="TOP">  
+        <p align="center">2</p></TD>
+      <TD WIDTH="18%" VALIGN="TOP">  
+        <p align="center">3</p></TD>
+      <TD WIDTH="18%" VALIGN="TOP">  
+        <p align="center">8</p></TD>
+      <TD WIDTH="22%" VALIGN="TOP">  
+        <p align="center">10</p></TD>
+      <TD WIDTH="22%" VALIGN="TOP">  
+        <p align="center">14</p></TD>
+    </TR>
+  </TABLE>
+
+</P> <I> 
+<p></P>
+<p>l: </P>
+</I> 
+<P> 
+
+  <TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=208>
+    <TR> 
+      <TD WIDTH="18%" VALIGN="TOP">  
+        <p align="center">3</p></TD>
+      <TD WIDTH="18%" VALIGN="TOP">  
+        <p align="center">5</p></TD>
+      <TD WIDTH="18%" VALIGN="TOP">  
+        <p align="center">6</p></TD>
+      <TD WIDTH="22%" VALIGN="TOP">  
+        <p align="center">10</p></TD>
+      <TD WIDTH="22%" VALIGN="TOP">  
+        <p align="center">11</p></TD>
+    </TR>
+  </TABLE>
+
+</P>  
+<p><I>Минимальная трудоемкость</I> – меньшее из<I> 
+  k</I> и <I>l </I>– min(<I>k, l</I>).</P>
+<p><I>Максимальная трудоемкость</I>: <I>k + l – 
+  1</I> (единицу вычитаем потому, что сравниваем все элементы, а самый последний 
+  просто дописываем к упорядоченной группе).</font></P>
+<P>В MergeSort при получении упорядоченных пар потребуется <I><IMG SRC="img/image120.gif" WIDTH=32 HEIGHT=41></I> 
+  действий. При получении упорядоченных четверок <I><IMG SRC="img/image121.gif" WIDTH=34 HEIGHT=41> 
+  </I> действий. Здесь <I><IMG SRC="img/image122.gif" WIDTH=17 HEIGHT=41></I> 
+  есть количество четверок в массиве, а <I>3</I> – это максимальная трудоемкость 
+  получения упорядоченных четверок (считая только сравнения) . Таким образом суммарная 
+  трудоемкость сортировки составит:</P>
+<P><IMG SRC="img/image123.gif" WIDTH=546 HEIGHT=59></P>
+<P>Таким образом, трудоемкость MergeSort составляет <IMG SRC="img/image124.gif" WIDTH=112 HEIGHT=23></P>
+<P><I>.<B> Теорема: </B> Сортировка на порядок быстрее, чем </I><IMG SRC="img/image125.gif" WIDTH=60 HEIGHT=23 align="texttop"> 
+  невозможна.</P>
+<P><I> <B>Доказательство: </B></I> Заметим, что сортировка с помощью 
+  некоторого алгоритма эквивалентна блужданию по двоичному дереву, где в узлах 
+  этого дерева находятся операторы сравнения. После операции сравнения маршрут 
+  двоится.</font></P>
+<p>Напомним, что <I>двоичное дерево</I> – граф, 
+  у которого ветвление в каждой вершине не больше, чем на две ветви.</font></P>
+<p>Тогда <I>развилками </I> дерева будут <I>сравнения 
+  </I>двух элементов массива; а<I> листьями</I> – все возможные варианты <I>перестановки</I> 
+  элементов массива (у массива длины <I>n </I>их будет <I>n!</I>).</font></P>
+<p>В этом случае <I>трудоемкость алгоритма</I> 
+  – высота дерева, другими словами, максимальный путь от вершины до листа дерева.</font></P>
+<p>Дерево с<I> k</I> листьями имеет высоту не меньше, 
+  чем <I>log<SUB>2</SUB>k</I> (т.к. дерево высоты <I>h</I> имеет не более, чем 
+  <I>2<SUP>n</SUP></I> листьев). Итак, трудоемкость произвольной сортировки будет 
+  не меньше, чем log<SUB>2</SUB>(n!).</P>
+<P ALIGN="CENTER">Т(n)&#8805; log<SUB>2</SUB>(n!)</P>
+<P>Воспользовавшись формулой Стирлинга, имеем:</P>
+<P><I>Т(n)&#8805; log<SUB>2</SUB>(n!)</I> &#8805; <IMG SRC="img/image126.gif" WIDTH=418 HEIGHT=56 align="absmiddle"></P>
+<P> поэтому их во внимание не принимаем данные величины пренебрежимо 
+  малы по сравнению с <img src="img/image127.gif" width=57 height=22></P>
+
+<P> <I><B>Теорема 
+  доказана.</B></I> </P>
+<a name=2 class="anchor"></a> 
+<h3>2.2 Быстрое умножение</h3>
+<b><P>2.4.1 Быстрое 
+  умножение чисел</P>
+</B> 
+<P>При обычном умножении столбиком 
+  нам потребуется <I>n<SUP>2</SUP></I> операций, где <I>n</I> – количество разрядов 
+  чисел. Попробуем произвести умножение чисел быстрее. Для этого поступим следующим 
+  образом:</P>
+<P>Пусть <IMG SRC="img/image128.gif" WIDTH=13 HEIGHT=14> 
+  и <IMG SRC="img/image129.gif" WIDTH=14 HEIGHT=17>– два <I>n</I>-разрядных числа 
+  (<I>n=2k</I>).</P>
+<P>Разобьем их двоичную запись 
+  пополам, т.е. на два отрезка длины <I>k</I>: </P>
+<P><IMG SRC="img/image130.gif" WIDTH=96 HEIGHT=62>, 
+  где</P>
+<P><IMG SRC="img/image131.gif" WIDTH=194 HEIGHT=162></P>
+<P>Рассмотрим умножение <IMG SRC="img/image132.gif" WIDTH=30 HEIGHT=17> 
+  по обычным формулам:</P>
+<P> <img src="img/image133.gif" width=468 height=30 align="absmiddle"><B><I>(2.7)</I></B> 
+  </P>
+<P>При перемножении по <I>(2.7)</I><B> 
+  </B>получаем рекуррентную формулу, для вычисления трудоёмкости: </P>
+<P><IMG SRC="img/image134.gif" WIDTH=162 HEIGHT=33>.</P>
+<P>Таким образом, в <I>(2.7)</I><B> 
+  </B>четыре произведения и одно сложение. Попробуем обойтись меньшим количеством 
+  произведений для умножения двух чисел по формуле <I>(2.7)</I>. Рассмотрим модификацию 
+  формулы <I>(2.7)</I><B> – </B>формулу <I>(2.8)</I>.</P>
+<P><IMG SRC="img/image135.gif" WIDTH=121 HEIGHT=68></P>
+<P>Тогда <IMG SRC="img/image136.gif" WIDTH=250 HEIGHT=29> 
+  <B><I>(2.8)</I></B> </P>
+<p>При перемножении 
+  чисел по <I>(2.8) </I>нам потребуется 3 умножения и 4 действия сложения и вычитания. 
+  Итого получаем трудоемкость:</P>
+<P><I> Т(n)= 
+  3 T(n/2)+4n</I> <I> <B>(2.9)</B></I></P>
+<p>Временно 
+  забудем, что числа <I>(a+b)</I> и <I>(c+d)</I> могут быть не <I>k</I>-разрядные, 
+  а <I>k+1</I>-разрядные. Организуем процесс умножения двух n-разрядных чисел 
+  по формуле <I>(2.8)</I> следующим образом: на входе имеем два длинных числа. 
+  Каждое из них разобьем пополам, и получается, что нам нужно 3 раза перемножить 
+  числа вдвое меньшей разрядности. Каждое из этих чисел снова делим пополам и 
+  перемножаем по формуле <I>(2.8).</I> Подобная процедура дробления осуществляется 
+  до тех пор, пока в результате очередного разделения не </P>
+<p>получатся 
+  одноразрядные числа, которые перемножаем по обычной таблице умножения. </P>
+<p>Оценим трудоемкость 
+  подобных вычислений по формуле <I>(2.8).</I> Она оценивается по рекуррентной 
+  формуле(2.9).</P>
+<P><B>Теорема 2.2: </B>Если 
+  трудоемкость некоторого алгоритма задается формулой </P>
+<P><IMG SRC="img/image137.gif" WIDTH=176 HEIGHT=38></P>
+<p> где: k 
+  – целое число, k&gt;1</P>
+<p> &#946; 
+  &lt; log <SUB>k</SUB>&#945;, &#946; &gt;0</P>
+<p> &#945; 
+  – oбычно целое ( хотя это необязательно),</P>
+<p> то существует 
+  следующая оценка трудоемкости данного алгоритма:</P>
+<P><IMG SRC="img/image138.gif"></P>
+<p>Без доказательства.</font></P>
+<P><B><U>Комментарии</U>: </B>Что 
+  делать, если происходит переполнение разрядов при вычислении по формуле <B><I>(2.8)</I></B>?</font></P>
+<P>Предположим, что при сложении 
+  (при вычислении <I>u</I>) у нас получились не <I>k</I>, а (<I>k+1)-</I> разрядные 
+  числа, т.е. <I>а</I> и <I>b</I> имеют <I>k+1</I> разряд. </P>
+<P>Выделим старший разряд: 
+  <I>а<SUB>1</SUB>, b<SUB>1</SUB> = 0 </I>или <I>1</I>,но один из них обязательно 
+  равен <I>1</I>.</font></P>
+<P>Тогда произведение можно 
+  осуществить следующим образом: </P>
+<P> <IMG SRC="img/image139.gif" > 
+  <B><I>(2.10)</I> </B></font></P>
+<P>В случае, когда возникает 
+  переполнение, перемножение <I>k+1 </I>разрядных чисел выполняется по формуле 
+  <I>2.10</I>. В ней по-прежнему одно умножение <I>(а<SUB>2</SUB>b<SUB>2</SUB>)</I> 
+  и одно сложение, которое может и не понадобиться. На трудоемкости (рекуррентная 
+  формула <I>2.9</I>) это существенно не отражается:</P>
+<P><I> Т(n)= 
+  3 T(n/2)+4n</I> <B><I>(2.9&#8242;)</I></B></P>
+<P>или <I>Т(n)= 
+  3 T(n/2)+5n</I></P>
+<P>Согласно <B><I>Теореме 2.2,</I></B> 
+  на трудоемкости перемножения по формуле <I>2.8</I> (формула быстрого умножения) 
+  это не сказывается. Получаем:</font></P>
+<I> 
+<p>T(n) &#8776; 
+  n<SUP>log 3 </SUP>&#8776; n<SUP>1,58</SUP> &lt;&lt; n<SUP>2</SUP></P>
+<br><br>
+<!--конец-->
+      
+				
+
+				</div>
+			</div>
+			
+      </div>
+    </div>
+  </div>
+	
+	<!--Меню навигации по Темам -->	
+	<div aria-label="..." class = "nav-menu">
+	 <ul class="pager background-transition-slow">
+		 <li title="Наверх" style = "margin-right:15px;	"><a class = "glyphicon glyphicon-menu-up page-scroll" href="#page-top"></a></li>
+		 <li title="К предыдущей лекции"><a class = "glyphicon glyphicon-menu-left page-scroll" href="t1.htm"></a></li>
+		 <li title="В содержание"><a class = "glyphicon glyphicon-list-alt" href="lec_index.htm"></a></li>
+		 <li title="К следующей лекции"><a class = "glyphicon glyphicon-menu-right page-scroll" href="t3.htm"></a></li>
+	 </ul>
+	</div>
+	<!---->
+	
+	</div>
+  <!-- jQuery -->
+  <script src="../lib/js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="../lib/js/bootstrap.min.js"></script>
+
+  <!-- Scrolling Nav JavaScript -->
+  <script src="../lib/js/jquery.easing.min.js"></script>
+  <script src="../lib/js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
